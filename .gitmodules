@@ -1,0 +1,6 @@
+[submodule "libs/broadcast-chan"]
+	path = libs/broadcast-chan
+	url = https://code.xkrd.net/haskell/broadcast-chan.git
+[submodule "libs/hyperloglog"]
+	path = libs/hyperloglog
+	url = https://code.xkrd.net/haskell/hyperloglog.git
