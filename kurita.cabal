@@ -93,7 +93,7 @@ executable kurita
     , siphash
     , text
     , time
-    , warp
+    , warp ^>= 3.2
 
 executable kurita-central
   default-language:    Haskell2010
