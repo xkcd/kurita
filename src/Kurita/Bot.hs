@@ -170,7 +170,6 @@ runBotCommand toText kbot (SetPrompt i)  = do
       kbotSetPrompt kbot prompt
       kuritaSend (kbotSlackConfig kbot) $ "Prompt set to \"" <> prompt <> "\""
 runBotCommand toText kbot (SetLive pr)  = do
-  prompts <- kbotPrompts kbot
   meta <- kbotTerms kbot
   br <- kbotBracket kbot
   case renderPrompt toText (kbotHash kbot) meta br pr of

@@ -18,6 +18,7 @@ import           Control.Lens
 import           Data.Aeson (ToJSON(toJSON), FromJSON(parseJSON), (.:))
 import qualified Data.Aeson as JS
 import qualified Data.Aeson.Types as JS
+import           Data.Approximate
 import           Data.Time
 import           Data.Foldable
 import           Data.Int
@@ -34,6 +35,10 @@ import           Data.Text (Text)
 import qualified Data.Vector.Unboxed as UV
 import           Data.Word
 import           GHC.Exts (fromList)
+
+instance (Reifies p Integer) => Ord (HyperLogLog p) where
+    compare a@(HyperLogLog av) b@(HyperLogLog bv) =
+      compare (HLL.size a^.estimate, av) (HLL.size b^.estimate, bv)
 
 slHead :: SortedList a -> a
 slHead = fst . fromJust . SL.uncons
@@ -98,7 +103,7 @@ instance (FromJSON c, FromJSON s, FromJSON m, Ord c, Ord s) => FromJSON (Bracket
 data KuritaGame
  = KGame
    { _kgEndTime :: {-# UNPACK #-} !UTCTime
-   , _kgCommentary :: {-# UNPACK #-} ![(UTCTime, Text)]
+   , _kgCommentary :: [(UTCTime, Text)]
    }
  deriving (Show, Eq, Ord)
 
@@ -179,7 +184,7 @@ addScore ct v =
 data ClientGame
  = CGame
    { _cgEndTime :: {-# UNPACK #-} !UTCTime
-   , _cgCommentary :: {-# UNPACK #-} ![Text]
+   , _cgCommentary :: [Text]
    }
   deriving (Show, Eq, Ord)
 

@@ -1,17 +1,34 @@
-cabal-version:       2.2
+cabal-version:       2.4
 name:                kurita
 version:             0
-synopsis:            The alpha emoji
--- description:
+synopsis:            Find the alpha emoji
+description:
+  A system for pitting each against the others and finding the greatest.
+  .
+  For an example, see <https://xkcd.com/2131/ Emojidome>.
 homepage:            https://oss.xkcd.com/
--- bug-reports:
 license:             BSD-3-Clause
 license-file:        LICENSE
 author:              davean
 maintainer:          oss@xkcd.com
--- copyright:
-category:            Game
+copyright:           Copyright (C) 2019 davean; additionally twimoji by Twitter, Inc and other contributors is licensed under CC-BY 4.0
+category:            Game, Web
 extra-source-files:  CHANGELOG.md
+
+data-files:
+  client/package.json
+  client/src/*.ts
+  client/src/*.tsx
+  client/tsconfig.json
+  client/webpack.config.js
+  client/dist/twemoji/*.svg
+  client/dist/dev.html
+  client/dist/index.html
+  client/dist/xkcd-Regular-v2.woff
+
+source-repository head
+  type: git
+  location: https://code.xkrd.net/xkcd/kurita-release.git
 
 library
   hs-source-dirs:      src
@@ -52,7 +69,7 @@ library
       , split                ^>= 0.2
       , stm                  ^>= 2.5
       , text                 ^>= 1.2
-      , time                 ^>= 1.9
+      , time                 ^>= 1.8
       , unordered-containers ^>= 0.2
       , uri-bytestring       ^>= 0.3
       , vector               ^>= 0.12
@@ -131,5 +148,6 @@ test-suite kurita-test
   default-language:    Haskell2010
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
-  main-is:             MyLibTest.hs
-  build-depends:       base ^>=4.12.0.0
+  main-is:             Tests.hs
+  build-depends:
+    base ^>=4.12.0.0

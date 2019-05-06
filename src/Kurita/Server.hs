@@ -36,7 +36,6 @@ import           Data.List (sort)
 import qualified Data.Map as Map
 import           Data.Proxy
 import           Data.Reflection (Reifies)
-import           Data.Sequence (Seq)
 import           Data.Text (Text)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
@@ -45,7 +44,6 @@ import           Data.Tuple (swap)
 import           Data.Word
 import           Kurita.Protocol
 import           Kurita.Bot
-import           Kurita.Prompt.Internal
 import           Kurita.Bot.Connection
 import qualified Network.HTTP.Types.Status as HTTP
 import qualified Network.Wai as WAI
@@ -53,8 +51,6 @@ import qualified Network.Wai.Handler.WebSockets as WAI
 import qualified Network.WebSockets as WS
 import           System.AtomicWrite.Writer.LazyByteString (atomicWriteFile)
 
-import           Network.Linklater
-import           Network.Linklater.Types
 import           Kurita.Bot.Types
 import           Data.ByteString (ByteString)
 
